@@ -8,31 +8,32 @@
 import SwiftUI
 
 struct Youtube: View {
-    let text: String
-    let image: String
+    var headline : String
+    var caption:String
+    var imageAvatar:String
+    var image:String
     var body: some View {
-        
-        
-        HStack{
-            Image("Image")
+        VStack(alignment: HorizontalAlignment.leading) {
+            Image(image)
                 .resizable()
-                .clipShape(Circle())
-                .frame(width: 80, height: 80)
-            Text(text)
-                .padding(50)
-                .font(.largeTitle)
-                .foregroundColor(.black)
-            
-    
+                .scaledToFit()
+            HStack{
+                Image(imageAvatar)
+                    .resizable()
+                    .clipShape(Circle())
+                    .frame(width: 100, height: 70)
+                VStack(alignment: HorizontalAlignment.leading){
+                    Text(headline).font(.headline)
+                    Text(caption).font(.caption2)
+                }
+                
+            }
         }
-        .padding(20)
-        .cornerRadius(5)
-        
     }
 }
 
 struct Youtube_Previews: PreviewProvider {
     static var previews: some View {
-        Youtube(text: "Youtube", image: "Image")
-    }
+            Youtube(headline:"Vídeo", caption: "Legenda",imageAvatar: "3", image:"3")
+        }
 }
